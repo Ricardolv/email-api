@@ -8,10 +8,10 @@ type Contact struct {
 
 type Campaign struct {
 	ID        string
-	Name      string
-	CreatedOn time.Time
-	Content   string
-	Contacts  []Contact
+	Name      string    `json:"name"`
+	CreatedOn time.Time `json:"created_on"`
+	Content   string    `json:"content"`
+	Contacts  []Contact `json:"contacts"`
 }
 
 func NewCampaign(name string, content string, emails []string) *Campaign {
