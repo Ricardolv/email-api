@@ -4,8 +4,8 @@ GEt http://localhost:3000/campaigns
 POST http://localhost:3000/campaigns
 
 {
-    "name":"Richard",
-    "content": "Test content",
+    "name":"Richard 2",
+    "content": "Test content 2",
     "emails": [
         "test@test.com.br"
     ]

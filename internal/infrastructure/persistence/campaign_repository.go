@@ -6,7 +6,11 @@ type CampaignRepository struct {
 	campaigns []campaign.Campaign
 }
 
-func (r *CampaignRepository) Create(campaign *campaign.Campaign) error {
-	r.campaigns = append(r.campaigns, *campaign)
+func (c *CampaignRepository) Create(campaign *campaign.Campaign) error {
+	c.campaigns = append(c.campaigns, *campaign)
 	return nil
+}
+
+func (c *CampaignRepository) FindAll() []campaign.Campaign {
+	return c.campaigns
 }

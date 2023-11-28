@@ -19,6 +19,11 @@ func (r *repositoryMock) Create(campaign *Campaign) error {
 	return args.Error(0)
 }
 
+func (r *repositoryMock) FindAll() []Campaign {
+	// args := r.Called(campaign)
+	return nil
+}
+
 var (
 	newCampaign = contract.NewCampaign{
 		Name:    "Test name",
