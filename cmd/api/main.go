@@ -3,6 +3,9 @@ package main
 import (
 	"email-api/internal/contract"
 	"email-api/internal/domain/campaign"
+	"email-api/internal/infrastructure/persistence"
+	internalerrors "email-api/internal/internal-errors"
+	"errors"
 	"net/http"
 
 	"github.com/go-chi/chi/middleware"
@@ -11,34 +14,40 @@ import (
 )
 
 func main() {
-	r := chi.NewRouter()
+	router := chi.NewRouter()
 
-	r.Use(middleware.RequestID)
-	r.Use(middleware.RealIP)
-	r.Use(middleware.Logger)
-	r.Use(middleware.Recoverer)
+	router.Use(middleware.RequestID)
+	router.Use(middleware.RealIP)
+	router.Use(middleware.Logger)
+	router.Use(middleware.Recoverer)
 
-	service := campaign.Service{}
+	service := campaign.Service{
+		Repository: &persistence.CampaignRepository{},
+	}
 
-	r.Post("/campaigns", func(w http.ResponseWriter, req *http.Request) {
+	router.Post("/campaigns", func(w http.ResponseWriter, req *http.Request) {
 		var request contract.NewCampaign
+		render.DecodeJSON(req.Body, &request)
 
-		err := render.DecodeJSON(req.Body, &request)
-		if err != nil {
-			println(err)
-		}
+		println("name: ", request.Name)
+		println("content: ", request.Content)
+		println("emails: ", len(request.Emails))
 
 		id, err := service.Create(request)
 		if err != nil {
-			render.Status(req, 400)
+
+			if errors.Is(err, internalerrors.ErrInternal) {
+				render.Status(req, 500)
+			} else {
+				render.Status(req, 400)
+			}
 			render.JSON(w, req, map[string]string{"error": err.Error()})
 			return
 		}
-
 		render.Status(req, 201)
 		render.JSON(w, req, map[string]string{"id": id})
 	})
 
-	http.ListenAndServe(":3000", r)
+	http.ListenAndServe(":3000", router)
 
 }
