@@ -1,4 +1,4 @@
-GEt http://localhost:3000/campaigns
+GET http://localhost:3000/campaigns
 
 ### 
 POST http://localhost:3000/campaigns

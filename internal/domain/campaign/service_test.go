@@ -19,9 +19,9 @@ func (r *repositoryMock) Create(campaign *Campaign) error {
 	return args.Error(0)
 }
 
-func (r *repositoryMock) FindAll() []Campaign {
+func (r *repositoryMock) FindAll() ([]Campaign, error) {
 	// args := r.Called(campaign)
-	return nil
+	return nil, nil
 }
 
 var (
