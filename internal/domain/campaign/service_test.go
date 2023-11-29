@@ -31,7 +31,7 @@ var (
 		Emails:  []string{"test@example.com"},
 	}
 	repoMock = new(repositoryMock)
-	service  = Service{}
+	service  = ServiceImp{}
 )
 
 func Test_Create_Campaign(t *testing.T) {
