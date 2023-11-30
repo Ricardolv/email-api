@@ -16,19 +16,19 @@ const (
 )
 
 type Contact struct {
-	ID         string
-	Email      string `validate:"email"`
-	CampaignId string
+	ID         string `gorm:"size:50"`
+	Email      string `validate:"email" gorm:"size:100"`
+	CampaignId string `gorm:"size:50"`
 }
 
 type Campaign struct {
-	ID        string    `validate:"required"`
-	Name      string    `validate:"min=5,max=24"`
+	ID        string    `validate:"required" gorm:"size:50"`
+	Name      string    `validate:"min=5,max=24" gorm:"size:100"`
 	CreatedOn time.Time `validate:"required"`
-	Content   string    `validate:"min=5,max=1024"`
+	Content   string    `validate:"min=5,max=1024" gorm:"size:1024"`
 	Contacts  []Contact `validate:"min=1,dive"`
-	Status    string
-	CreatedBy string `validate:"email"`
+	Status    string    `gorm:"size:20"`
+	CreatedBy string    `validate:"email" gorm:"size:50"`
 }
 
 func (c *Campaign) Cancel() {
