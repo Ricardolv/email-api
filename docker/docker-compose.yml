@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  database:
+    image: 'postgres:latest'
+    container_name: postgresql-email
+    ports:
+      - 15432:5432
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks: 
+  postgres-network:
+    driver: bridge
