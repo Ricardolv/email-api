@@ -18,8 +18,9 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
+	db := persistence.NewDb()
 	campaignService := campaign.ServiceImp{
-		Repository: &persistence.CampaignRepository{},
+		Repository: &persistence.CampaignRepository{Db: db},
 	}
 
 	handler := endpoints.Handler{
