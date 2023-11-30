@@ -1,12 +1,17 @@
-GET http://localhost:3000/campaigns
-
-### 
 POST http://localhost:3000/campaigns
 
 {
     "name":"Richard 2",
     "content": "Test content 2",
-    "emails": [
-        "test@test.com.br"
-    ]
+    "emails": ["richardluizv@gmail.com"],
+    "createdby": "richardluizv@gmail.com"
 }
+###
+
+GET http://localhost:3000/campaigns/clkacuna2ua4pmnshj0g
+
+### 
+
+DELETE http://localhost:3000/campaigns/clkacuna2ua4pmnshj0g
+
+### 
