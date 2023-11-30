@@ -46,7 +46,7 @@ _testmain.go
 /test/run.out
 /test/times.out
 
-/docker/db-data
+/docker/db-data/*
 .env
 
 # This file includes artifacts of Go build that should not be checked in.
