@@ -7,6 +7,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/go-chi/render v1.0.3
 	github.com/go-playground/validator/v10 v10.16.0
+	github.com/jaswdr/faker v1.19.1
 	github.com/rs/xid v1.5.0
 	github.com/stretchr/testify v1.8.4
 	gorm.io/gorm v1.25.5
