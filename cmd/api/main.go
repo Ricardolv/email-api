@@ -18,16 +18,16 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
-	campaignService := campaign.Service{
+	campaignService := campaign.ServiceImp{
 		Repository: &persistence.CampaignRepository{},
 	}
 
 	handler := endpoints.Handler{
-		CampaignService: campaignService,
+		CampaignService: &campaignService,
 	}
 
 	router.Post("/campaigns", endpoints.HandlerError(handler.CampaignPost))
-	router.Get("/campaigns", endpoints.HandlerError(handler.CampaignGet))
+	router.Get("/campaigns", endpoints.HandlerError(handler.CampaignGetById))
 
 	http.ListenAndServe(":3000", router)
 
