@@ -1,18 +1,46 @@
 version: '3'
 
 services:
-  database:
+  postgres-email:
     image: 'postgres:latest'
-    container_name: postgresql-email
+    container_name: postgres-email
     ports:
       - 15432:5432
     env_file:
       - .env
     networks:
-      - postgres-network
+      - local
     volumes:
       - ./db-data/:/var/lib/postgresql/data/
 
+  postgres_keycloak_email:
+    container_name: postgres_keycloak_email
+    image: postgres:13
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5434:5432"
+
+  keycloak_email:
+    container_name: keycloak_email
+    image: quay.io/keycloak/keycloak:legacy
+    platform: linux/amd64
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KEYCLOAK_DATABASE_NAME: keycloak
+      KEYCLOAK_DATABASE_USER: keycloak
+      KEYCLOAK_DATABASE_PASSWORD: secret
+      KEYCLOAK_DATABASE_HOST: postgres_keycloak_email
+    ports:
+      - "8180:8080"
+    depends_on:
+      - postgres_keycloak_email
+
 networks: 
-  postgres-network:
+  local:
     driver: bridge

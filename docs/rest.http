@@ -14,4 +14,14 @@ GET http://localhost:3000/campaigns/clkbm0d7a2ua5t7fataog
 
 DELETE http://localhost:3000/campaigns/clkacuna2ua4pmnshj0g
 
-### 
+###
+
+GET http://localhost:3000/ping
+
+
+###
+# @name token
+POST  http://localhost:8180/auth/realms/provider/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=email-api&client_secret=XdKP5CPnGnCkNwQXTYCfntEwdiptfBto&grant_type=client_credentials
