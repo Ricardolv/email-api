@@ -1,4 +1,5 @@
 POST http://localhost:3000/campaigns
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJpa2N6Y01fZFZieVF1Mm5iV0xpWGR1NEV3N0taU2VhSGZ6ZEhBZUNNanhVIn0.eyJleHAiOjE3MDE0ODE3MjksImlhdCI6MTcwMTQ4MTQyOSwianRpIjoiMzg0ZDMwOTMtMWYyNi00OTgyLWFhNzAtOTZlYmIxM2QzYzlhIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTgwL2F1dGgvcmVhbG1zL3Byb3ZpZGVyIiwiYXVkIjoiZW1haWwtYXBpIiwic3ViIjoiNmY2MjI0ZDUtZDQ2Mi00MGE3LThjMmEtNzBmODJmNmQyNTBjIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiZW1haWwtYXBpIiwic2Vzc2lvbl9zdGF0ZSI6ImFiNzU4YzdhLTkxNzEtNDA5Yi05YzBhLTdmZWU1NTc5YTJhYiIsInNjb3BlIjoiIiwic2lkIjoiYWI3NThjN2EtOTE3MS00MDliLTljMGEtN2ZlZTU1NzlhMmFiIn0.AtfweIdTs3nVdwrE2-IkFTQ5JOjuy-v8BufyaBeUhdRbZvJc3F7K8h_o-3s6svUx0EZ9x5qPoFqbX_DHIf61l0qnryqQe-e3kAeLOpa2F7qYQIy3K1tEFLPO5wPVxy7AwijYXAotvl92136GFOMLS7MTwGZjDqOMHejoSSg1S-itFjDQoWTHyQ5LDx5MAbrfaaA1dwgOPWL2YGQcEpo6JAQNbwsqqwe2fdPG6QGrXaafpcNg1MJ88zyASBL5oEshL_fgRB7zvQ0n1prq9vGThYDdYHpNKGV-c1cb3G7JHIlGqEKRyV_jL_EwPKFt6d3hqQxSigAzgijzfHCPp1phPg 
 
 {
     "name":"Richard 2",
@@ -6,22 +7,25 @@ POST http://localhost:3000/campaigns
     "emails": ["richardluizv@gmail.com"],
     "createdby": "richardluizv@gmail.com"
 }
-###
 
+###
 GET http://localhost:3000/campaigns/clkbm0d7a2ua5t7fataog
 
 ### 
-
 DELETE http://localhost:3000/campaigns/clkacuna2ua4pmnshj0g
 
 ###
-
 GET http://localhost:3000/ping
-
 
 ###
 # @name token
 POST  http://localhost:8180/auth/realms/provider/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=email-api&client_secret=XdKP5CPnGnCkNwQXTYCfntEwdiptfBto&grant_type=client_credentials
+client_id=email-api&username=richardluizv@gmail.com&password=12345&grant_type=password
+###
+# @name token
+POST  http://localhost:8180/auth/realms/provider/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=email_users&username=richardluizv@gmail.com&password=12345&grant_type=password

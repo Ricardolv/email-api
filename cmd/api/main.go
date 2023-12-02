@@ -32,7 +32,7 @@ func main() {
 	})
 
 	router.Route("/campaigns", func(r chi.Router) {
-		//r.Use(endpoints.Auth)
+		r.Use(endpoints.Auth)
 		r.Post("/", endpoints.HandlerError(handler.CampaignPost))
 		r.Get("/{id}", endpoints.HandlerError(handler.CampaignGetById))
 		r.Delete("/{id}", endpoints.HandlerError(handler.CampaignDelete))

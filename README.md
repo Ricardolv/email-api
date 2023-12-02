@@ -11,3 +11,4 @@
 - [Chi](https://github.com/go-chi/chi)                                          <BR/>
 - [Air - Live reload for Go apps](https://github.com/cosmtrek/air)              <BR/>
 - [Gorm](https://gorm.io/)                                                      <BR/>
+- [Oidc - OpenID Connect support for Go](https://github.com/coreos/go-oidc)                                     <BR/>
