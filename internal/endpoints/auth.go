@@ -3,6 +3,7 @@ package endpoints
 import (
 	"context"
 	"net/http"
+	"os"
 	"strings"
 
 	oidc "github.com/coreos/go-oidc/v3/oidc"
@@ -22,7 +23,7 @@ func Auth(next http.Handler) http.Handler {
 		}
 
 		tokenString = strings.Replace(tokenString, "Bearer ", "", 1)
-		provider, err := oidc.NewProvider(req.Context(), "http://localhost:8180/auth/realms/provider")
+		provider, err := oidc.NewProvider(req.Context(), os.Getenv("KEYCLOAK_URL"))
 		if err != nil {
 			render.Status(req, 500)
 			render.JSON(w, req, map[string]string{"error": "error to connect to the provider"})
