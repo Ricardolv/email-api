@@ -77,3 +77,4 @@ _testmain.go
 
 # Go workspace file
 go.work
+tmp/
