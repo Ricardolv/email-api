@@ -1,7 +1,7 @@
 # Email API
 
 ## Setup
-[Goenv - Go Version Management](https://github.com/go-nv/goenv)
+- [Goenv - Go Version Management](https://github.com/go-nv/goenv)
 
 ## Dependency
 - [Xid - Globally Unique ID Generator](https://github.com/rs/xid)               <BR/>
@@ -12,4 +12,5 @@
 - [Air - Live reload for Go apps](https://github.com/cosmtrek/air)              <BR/>
 - [Gorm](https://gorm.io/)                                                      <BR/>
 - [Oidc - OpenID Connect support for Go](https://github.com/coreos/go-oidc)     <BR/>
-- [jwt-go](https://github.com/dgrijalva/jwt-go)
+- [jwt-go](https://github.com/dgrijalva/jwt-go)                                 <BR/>
+- [GoDotEnv](https://github.com/joho/godotenv)                                 <BR/>
