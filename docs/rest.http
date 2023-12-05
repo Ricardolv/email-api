@@ -24,7 +24,7 @@ GET {{url}}/campaigns/{{campaign_id}}
 Authorization: Bearer {{access_token}}
 
 ###
-PATCH {{url}}/campaigns/start/{{campaign_id}}
+PATCH {{url}}/campaigns/{{campaign_id}}
 Authorization: Bearer {{access_token}}
 
 ###

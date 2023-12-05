@@ -46,7 +46,7 @@ func main() {
 		r.Post("/", endpoints.HandlerError(handler.CampaignPost))
 		r.Get("/{id}", endpoints.HandlerError(handler.CampaignGetById))
 		r.Delete("/{id}", endpoints.HandlerError(handler.CampaignDelete))
-		r.Patch("/start/{id}", endpoints.HandlerError(handler.CampaignStart))
+		r.Patch("/{id}", endpoints.HandlerError(handler.CampaignStart))
 	})
 
 	http.ListenAndServe(":3000", router)
