@@ -3,6 +3,7 @@ package main
 import (
 	"email-api/internal/domain/campaign"
 	"email-api/internal/endpoints"
+	"email-api/internal/infrastructure/mail"
 	"email-api/internal/infrastructure/persistence"
 	"log"
 	"net/http"
@@ -29,6 +30,7 @@ func main() {
 	db := persistence.NewDb()
 	campaignService := campaign.ServiceImp{
 		Repository: &persistence.CampaignRepository{Db: db},
+		SendMail:   mail.SendMail,
 	}
 
 	handler := endpoints.Handler{
@@ -44,6 +46,7 @@ func main() {
 		r.Post("/", endpoints.HandlerError(handler.CampaignPost))
 		r.Get("/{id}", endpoints.HandlerError(handler.CampaignGetById))
 		r.Delete("/{id}", endpoints.HandlerError(handler.CampaignDelete))
+		r.Patch("/start/{id}", endpoints.HandlerError(handler.CampaignStart))
 	})
 
 	http.ListenAndServe(":3000", router)
