@@ -12,7 +12,7 @@ Authorization: Bearer {{access_token}}
 {
     "name":"Richard 2",
     "content": "Test content 2",
-    "emails": ["richardluizv@gmail.com"],
+    "emails": ["richardluizv@gmail.com", "lilianecsilva@hotmail.com"],
     "createdby": "richardluizv@gmail.com"
 }
 
